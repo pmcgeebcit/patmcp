@@ -38,6 +38,8 @@ def get_fahrenheitFromCelsius(celsius: float) -> dict:
     temperature = {'celsius': celsius, 'fahrenheit': round(celsius * 1.8) + 32}
     return temperature
 
+
+import os
 if __name__ == "__main__":
-    # Run as HTTP server for cloud hosting
-    mcp.run(transport="http", host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    mcp.run(transport="http", host="0.0.0.0", port=port)
