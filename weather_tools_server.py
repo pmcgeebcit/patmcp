@@ -38,8 +38,14 @@ def get_fahrenheitFromCelsius(celsius: float) -> dict:
     temperature = {'celsius': celsius, 'fahrenheit': round(celsius * 1.8) + 32}
     return temperature
 
-
 import os
+import uvicorn
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
-    mcp.run(transport="http", host="0.0.0.0", port=port)
+
+    # Get the ASGI app from MCP
+    app = mcp.http_app()
+
+    # Run with uvicorn (Render-compatible)
+    uvicorn.run(app, host="0.0.0.0", port=port)
