@@ -1,5 +1,5 @@
 from __future__ import annotations
-from fastmcp import FastMCP
+from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("weather-tools")
 
